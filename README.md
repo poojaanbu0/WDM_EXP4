@@ -1,5 +1,5 @@
 ### EX4 Implementation of Cluster and Visitor Segmentation for Navigation patterns
-### DATE: 
+### DATE: 14/03/2024
 ### AIM: To implement Cluster and Visitor Segmentation for Navigation patterns in Python.
 ### Description:
 <div align= "justify">Cluster visitor segmentation refers to the process of grouping or categorizing visitors to a website, 
@@ -15,26 +15,23 @@
 
 ### Program:
 ```python
-# Visitor segmentation based on characteristics
-# read the data
-/*WRITE YOUR CODE HERE
+import pandas as pd
+import matplotlib.pyplot as plt
 
-# Perform segmentation based on characteristics (e.g., age groups)
-/*WRITE YOUR CODE HERE
 
-```
-### Output:
 
-### Visualization:
-```python
-# Create a list to store counts of visitors in each age group
-/*WRITE YOUR CODE HERE
+visitor_df = pd.read_csv('/content/clustervisitor.csv')
 
-# Count visitors in each age group
-/*WRITE YOUR CODE HERE
-    
-# Define age group labels and plot a bar chart
-/*WRITE YOUR CODE HERE
+
+age_groups = {
+    'Young': (visitor_df['Age'] <= 30),
+    'Middle-aged': ((visitor_df['Age'] > 30) & (visitor_df['Age'] <= 50)),
+    'Elderly': (visitor_df['Age'] > 50)
+}
+
+
+visitor_counts = [sum(condition) for condition in age_groups.values()]
+age_group_labels = list(age_groups.keys())
 
 plt.figure(figsize=(8, 6))
 plt.bar(age_group_labels, visitor_counts, color='skyblue')
@@ -42,8 +39,21 @@ plt.xlabel('Age Groups')
 plt.ylabel('Number of Visitors')
 plt.title('Visitor Distribution Across Age Groups')
 plt.show()
+
+
+for group, condition in age_groups.items():
+    visitors_in_group = visitor_df[condition]
+    print(f"Visitors in {group} age group:")
+    print(visitors_in_group)
+
+print("Visitor segmentation based on age groups complete.")
 ```
+
 ### Output:
+![image](https://github.com/poojaanbu0/WDM_EXP4/assets/119390329/94515887-c26f-40f0-9772-02ba2cc4346e)
+
+![image](https://github.com/poojaanbu0/WDM_EXP4/assets/119390329/75544792-c46f-4744-857c-941dbfcb66a7)
 
 
 ### Result:
+Visitor segmentation based on age groups successfully completed.
